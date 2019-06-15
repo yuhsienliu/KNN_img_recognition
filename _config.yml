@@ -1,0 +1,56 @@
+# Site settings
+title: Yu-Hsien's Blog
+email: liu.yuhsien81@gmail.com
+description: > # this means to ignore newlines until "baseurl:"
+  Yu-Hsien's Blog
+baseurl: "" # the subpath of your site, e.g. /blog/
+url: "https://yuhsienliu.github.io" # the base hostname & protocol for your site
+rss_url: /pages/feed.xml
+author: Yu-Hsien Liu
+#paginate:            1
+
+
+# Sidebar filter
+# Choose 'tag' or 'category' as filter in sidebar.
+filter: 'category'
+recent_num: 20
+
+# Social Media
+#twitter:
+#weibo:
+github: yuhsienliu
+#instagram:
+linkedin: yuhsienliu
+
+# avatar and Favicon
+avatar: https://avatars0.githubusercontent.com/u/19959065?s=460&v=4
+favicon: /assets/img/website_icon.png
+
+# disqus config
+disqus:
+  shortname: yu-hsiens-blog
+
+# google analytics config
+ga:
+  id: UA-140141522-1
+  url: yuhsienliu.github.io
+
+# Build settings
+permalink: /:year/:month/:day/:title.html
+markdown: kramdown
+highlighter: rouge
+mathjax: disabled
+sass:
+  style: compressed
+
+# Jekyll Plugin
+# Gems
+plugins:
+  - jekyll-sitemap
+  - jekyll-seo-tag
+  - jekyll-feed
+#  - jekyll-paginate
+  - jekyll-gist
+  - jekyll-mentions
+  - jemoji
+
