@@ -3,11 +3,7 @@ title: Face Recognition and Gender Classification with K-Nearest Neighbours (KNN
 layout: post
 ---
 
-# Face Recognition and Gender Classification with K-Nearest Neighbours (KNN)
-
 **Codes for this project are joint work with  [Beilei Tang](https://www.linkedin.com/in/beilei-tang-88828a146/) ** @beileitang1
-
-
 
 ## Introduction
 
