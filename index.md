@@ -5,11 +5,11 @@ layout: post
 
 **Codes for this project are joint work with  [Beilei Tang](https://www.linkedin.com/in/beilei-tang-88828a146/) ** @beileitang1
 
-## Introduction
+# Introduction
 
 We constructed facial recognition programs with KNN algorithm to classify the names and gendors of actors/actresses in a subset of the [FaceScrub](https://megaface.cs.washington.edu/) dataset. This project is done in Python on MacOS.
 
-### K-nearest-neighbours explained
+## K-nearest-neighbours explained
 
 The k-nearest-neighbours (KNN) classification algoriths, is one of the simplest supervised Machine Learning algorithms. $K$ is interpreted as the number of nearest neighbors desired to examine.
 
@@ -22,15 +22,15 @@ Here in Figure 1 (please bear with my hand drawing (〃∀〃) ), we assume ther
 
 
 
-## Data 
+# Data 
 
-### Dataset
+## Dataset
 
 In our study of name classification, we used a subset of 6 actors, including Angie Harmon, Peri Gilpin, Lorraine Bracco, Micheal Vartan, Daniel Radcliffe, and Gerad Butler. The first 3 actresses are female and the latter 3 are male. From the file paths of the cropped and uncropped images, we collected and saved information, such as actor name and gender, in a Python pandas dataframe.
 
 For the gender classification, we trained KNN classifier on the above 6 actors/acctresses. And then we test the performance of this classifier on other 24 actors/acctresses (12 are male, 12 are female.)
 
-###  Download
+##  Download
 
 The full FaceScrub data set is 16.4 GB and contains uncropped, cropped images  and their bounding boxes sorted in folders of the names of actors/acctresses. 
 
@@ -45,7 +45,7 @@ And we unzip each of the actor's folder containing the uncropped images set on t
 $ tar -xvzf downloaded.tgz downloaded/Daniel\ Radcliffe/
 ```
 
-### Matching 
+## Matching 
 
 Then,  we checked if each cropped image has their corresponding uncropped image.  We examine if output directories (one for the figures shown in this paper and another for the resized images) exist or not, then we load the file paths for each cropped and uncropped image in a pandas dataframe.
 
@@ -79,7 +79,7 @@ Then,  we checked if each cropped image has their corresponding uncropped image.
 
 In order to choose an optimzal number of nearest neighbor ($k_{best}$), images are divided into three sets: training, validation and testing set. The training set is used to calculate relevant distances; validation set is used to make sure we choose the $k$ with smallest mean $0-1$ error; testing set is used to examine the performance.
 
-### Matching results and examples
+## Matching results and examples
 
 We have most of the uncropped pictures aligned with their cropped correspondence. However, a few files seem to be broken. After matching up cropped and uncropped images, we end up with the number of images shown in **TABLE**. We then re-sized the coloured cropped images into $32\times 32-$pixel images and transformed them into black and white pictures.
 
@@ -88,17 +88,17 @@ We have most of the uncropped pictures aligned with their cropped correspondence
 
 ## 
 
-### `Sampling
+## Sampling
 
 For each actor, $120$ images are randomly chosen with the Pandas data frame sample function. The first $100$ entries in the $120$ samples form the training set; $101-111$ entries are taken as validation set; The last $111-120$ images are used as the testing set. 
 
-### Image processing
+## Image processing
 
 We loaded  and resized the matched images again with OpenCV-Python. The loaded images are converted into grayscale and r esized  to size of $32\times32\times3$(representing BGR form images) Python NumPy matrices. These images can further be flattened into $1-$dimensional array with the numpy.flatten() method. 
 
-## KNN from Scratch
+# KNN from Scratch
 
-### 1. Euclidean distance
+## 1. Euclidean distance
 
 $$
 \begin{align}
@@ -113,7 +113,7 @@ def calculate_eculidean_dis(X_train, X_test):
     return dist
 ```
 
-### 2. cal_neighbours
+## 2. cal_neighbours
 
 We sorted the distances between X_train and the given testing image, X_test, and return the locations where the closest neighbors are.
 
@@ -137,7 +137,7 @@ def cal_neighbours(X_train, Y_train, X_test, k, neighbor_loc=False):
 
 
 
-### 3. majority vote
+## 3. majority vote
 
 ```python
 # majority vote to classifier the new example
@@ -166,19 +166,20 @@ def winner_vote(labels, display=True):
 
 
 
-## Results
+# Results
 
-### Face recognition
+## Face recognition
 
 We used $10$ different values for $k$ from $1$ to $10$ on validation data set, and the best performance is the value of $k$ equals to $4$. Then, by using the KNN algorithm with the best value of $k$ ($k=4$) on test set , we get the mean of error which is $0.267$
 
 <p style="text-align: center;"><img src="figures/PART4.png"  height="300"><br>
   <b>Figure 3</b>: Performance for face recognition</p>
 
-### Gender recognition
+## Gender recognition
 
 We tested different values for $k$ from $1$ to $10$ on validation set to get the best value of k. And we found the best performing value for $k$ is $8$ on the validation set with mean of testing error to be $0.083$
 
 <p style="text-align: center;"><img src="figures/PART5.png"  height="300"><br>
-  <b>Figure 3</b>: Performance for gender prediction</p>
+  <b>Figure 4</b>: Performance for gender prediction</p>
+
 
